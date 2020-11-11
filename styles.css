@@ -3,6 +3,7 @@ body {
     margin: 0;
     font-size: 18px;
 	font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica Neue,Arial,Noto Sans,sans-serif;
+	background-color: #D3D3D3;
 }
 
 .container{
@@ -18,9 +19,10 @@ body {
 .head{
 	grid-area: head;
 	text-transform: uppercase;
-	background-color: blue;
+	background-color: #4682B4;
 	color: #C0C0C0;
 	text-align: center;
+	color: white;
 }
 
 .main{
@@ -48,12 +50,25 @@ form button {
 }
 
 form button:hover {
-  background: #0b7dda;
+  background: red;
+  background-color: red;
+  border-radius: 8px;
+  border: none;
+  color: black;
 }
 
-form::after {
+form:after {
   content: "";
   clear: both;
   display: grid;
+  background-color: red;
 }
 
+.results .notfound{
+	color: red;
+}
+
+.results{
+	border-top;
+	border-top: 5px solid gray;
+}

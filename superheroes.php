@@ -1,4 +1,6 @@
 <?php
+$input = file_get_contents('php://input');
+$found = False;
 
 $superheroes = [
   [
@@ -65,8 +67,24 @@ $superheroes = [
 
 ?>
 
-<ul>
-<?php foreach ($superheroes as $superhero): ?>
-  <li><?= $superhero['alias']; ?></li>
+<?php if (empty($input)): ?>
+
+	<ul>
+		<?php foreach ($superheroes as $superhero): ?>
+			<li><?= $superhero['alias']; ?></li>
 <?php endforeach; ?>
-</ul>
+	</ul>
+<?php else: ?>
+    <?php foreach ($superheroes as $superhero): ?>
+        <?php if (strtolower($input) == strtolower($superhero['name']) || strtolower($input) == strtolower($superhero['alias'])): ?>
+            <h3><?= $superhero['alias'] ?></h3>
+            <h4><?= "A.K.A. ".$superhero['name'] ?></h4>
+            <p><?= $superhero['biography'] ?></p>
+            <?php $found = True; ?>
+            <?php break; ?>
+        <?php endif; ?>
+    <?php endforeach; ?>
+    <?php if ($found == False): ?>
+        <h4 class="notfound">SUPERHERO NOT FOUND</h4>
+    <?php endif; ?>
+<?php endif; ?>
